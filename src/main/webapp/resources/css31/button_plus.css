@@ -1,0 +1,28 @@
+.fvrclonned
+{
+    margin-top: 10px;
+}
+
+.glyphicon
+{
+    font-size: 12px;
+}
+
+/* classes de teste */
+body, select {
+    font-size: 14px;
+}
+form {
+    margin: 5px;
+}
+p {
+    color: red;
+    margin: 5px;
+}
+b {
+    color: blue;
+}
+
+.btnenviar {
+    margin-top: 10px;
+}
