@@ -73,8 +73,9 @@ public class UserController {
         String code = candidate.getSessionCode();
         model.addAttribute("code",code);
         Anketa anketa = anketaService.getByIdCandidateForForm(candidate.getId());
-        if(anketa!=null)
+        if(anketa!=null){
             model.addAttribute("anketa", anketa);
+        }
         else
             model.addAttribute("anketa", new Anketa());
         model.addAttribute("name", candidate.getName()+" "+candidate.getSurname());

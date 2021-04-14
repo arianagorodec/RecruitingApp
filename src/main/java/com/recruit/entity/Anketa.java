@@ -3,6 +3,7 @@ package com.recruit.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="anketa")
@@ -14,29 +15,20 @@ public class Anketa {
     private long id;
 
 
-    @Column(name = "question1")
+    @Transient
     private String question1;
-    @Column(name = "question2")
+    @Transient
     private String question2;
-    @Column(name = "question3")
+    @Transient
     private String question3;
-    @Column(name = "question4")
+    @Transient
     private String question4;
-    @Column(name = "question5")
+    @Transient
     private String question5;
-
-    @Column(name = "question6")
-    private String question6DB;
     @Transient
     private String[] question6;
-
-    @Column(name = "question7")
-    private String question7DB;
     @Transient
     private String[] question7;
-
-    @Column(name = "question8")
-    private String question8DB;
     @Transient
     private String[] question8;
 
@@ -48,6 +40,9 @@ public class Anketa {
     @OneToOne(optional = false)
     @JoinColumn(name="id_candidate", unique = true)
     private Candidate candidate;
+
+    @Column(name="answers")
+    private String answers;
 
     public Anketa() {
     }
@@ -126,29 +121,6 @@ public class Anketa {
         this.question8 = question8;
     }
 
-    public String getQuestion6DB() {
-        return question6DB;
-    }
-
-    public void setQuestion6DB(String question6DB) {
-        this.question6DB = question6DB;
-    }
-
-    public String getQuestion7DB() {
-        return question7DB;
-    }
-
-    public void setQuestion7DB(String question7DB) {
-        this.question7DB = question7DB;
-    }
-
-    public String getQuestion8DB() {
-        return question8DB;
-    }
-
-    public void setQuestion8DB(String question8DB) {
-        this.question8DB = question8DB;
-    }
 
     public String getResume() {
         return resume;
@@ -174,6 +146,14 @@ public class Anketa {
         this.candidate = candidate;
     }
 
+    public String getAnswers() {
+        return answers;
+    }
+
+    public void setAnswers(String answers) {
+        this.answers = answers;
+    }
+
     public void setAnketa(Anketa anketa) {
         this.setQuestion1(anketa.getQuestion1());
         this.setQuestion2(anketa.getQuestion2());
@@ -183,6 +163,8 @@ public class Anketa {
         this.setQuestion6(anketa.getQuestion6());
         this.setQuestion7(anketa.getQuestion7());
         this.setQuestion8(anketa.getQuestion8());
+
+        this.setAnswers(anketa.getAnswers());
         this.setResume(anketa.getResume());
         this.setReview(anketa.getReview());
         this.setCandidate(anketa.getCandidate());

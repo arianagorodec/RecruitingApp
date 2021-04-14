@@ -43,9 +43,7 @@ public class AnketaServiceImpl implements AnketaService {
     }
 
     public Anketa updateAnketaFromForm(Anketa anketa) {
-        anketa.setQuestion6DB(combineStr(anketa.getQuestion6()) );
-        anketa.setQuestion7DB(combineStr(anketa.getQuestion7()) );
-        anketa.setQuestion8DB(combineStr(anketa.getQuestion7()) );
+        anketa.setAnswers(combineAnswer(anketa));
         return anketaRepository.save(anketa);
     }
 
@@ -57,13 +55,28 @@ public class AnketaServiceImpl implements AnketaService {
             return q6;
     }
 
+    public String combineAnswer (Anketa anketa){
+        String a = "";
+            a=anketa.getQuestion1()+"/"+anketa.getQuestion2()+"/"+anketa.getQuestion3()+"/"+anketa.getQuestion4()+"/"
+                    +anketa.getQuestion5()+"/"+combineStr(anketa.getQuestion6())+"/"
+                    +combineStr(anketa.getQuestion7())+"/"+combineStr(anketa.getQuestion8());
+        return a;
+    }
+
     public Anketa getByIdCandidateForForm(long id){
         Anketa anketa = getByIdCandidate(id);
         if(anketa!=null) {
             String delimeter = "\\."; // Разделитель
-            anketa.setQuestion6(anketa.getQuestion6DB().split(delimeter));
-            anketa.setQuestion7(anketa.getQuestion7DB().split(delimeter));
-            anketa.setQuestion8(anketa.getQuestion8DB().split(delimeter));
+            String delimeterAnswer = "/";
+            String answers[]=anketa.getAnswers().split(delimeterAnswer);
+            anketa.setQuestion1(answers[0]);
+            anketa.setQuestion2(answers[1]);
+            anketa.setQuestion3(answers[2]);
+            anketa.setQuestion4(answers[3]);
+            anketa.setQuestion5(answers[4]);
+            anketa.setQuestion6(answers[5].split(delimeter));
+            anketa.setQuestion7(answers[6].split(delimeter));
+            anketa.setQuestion8(answers[7].split(delimeter));
         }
         return anketa;
     }
