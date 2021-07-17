@@ -92,7 +92,7 @@
                 <a href="#close" title="Закрыть" class="close">X</a>
 
                 <form  method="post" action="/hr/vacancy/add">
-                  <div class="modal-body">
+<%--                  <div class="modal-body">--%>
                     <input type="number" id="id" name="id2" class="hidden">
                     <div class="form-group required">
                       <label for="vacancy" class="col-sm-3 control-label">Вакансия</label>
@@ -131,20 +131,38 @@
                       </div>
                     </div>
                     <div class="form-group">
+                      <label for="link" class="col-sm-3 control-label">Тестовый балл</label>
+                      <div class="col-sm-9">
+                        <input type="number" class="form-control" min="0" max="10" step="0.1" id="pass_scoreadd" name="pass_score" value="${vacancy.pass_score}" placeholder="Тестовый балл">
+                      </div>
+                    </div>
+                  <div class="form-group required">
+                    <label for="post" class="col-sm-3 control-label">Иностранного языка</label>
+                    <div class="col-sm-9">
+                      <select class="form-control" id="language_leveladd" name="language_level" >
+                        <option value="A1"selected>A1</option>
+                        <option value="A2">A2</option>
+                        <option value="B1">B1</option>
+                        <option value="B2">B2</option>
+                        <option value="C1">C1</option>
+                        <option value="C2">C2</option>
+                      </select>
+                    </div>
+                  </div>
+                    <div class="form-group">
                       <label for="description1" class="col-sm-3 control-label">Описание</label>
                       <div class="col-sm-9">
                         <input type="text" class="form-control" id="description1" name="description" placeholder="Введите описание">
                       </div>
                     </div>
-                  </div>
 
                   <div class="modal-footer">
                     <button type="submit" class="login100-form-btn">Сохранить</button>
                     <button class="login100-form-btn">
                       <a href="#close" title="Закрыть" >Отмена</a>
                     </button>
-
                   </div>
+<%--                  </div>--%>
                 </form>
 
               </div>
@@ -163,6 +181,8 @@
                   <td><a href="" class="white-text templatemo-sort-by">Отдел <span class="caret"></span></a></td>
                   <td><a href="" class="white-text templatemo-sort-by">Должность <span class="caret"></span></a></td>
                   <td><a href="" class="white-text templatemo-sort-by">Ссылка на тест <span class="caret"></span></a></td>
+                  <td><a href="" class="white-text templatemo-sort-by">Тестовый балл <span class="caret"></span></a></td>
+                  <td><a href="" class="white-text templatemo-sort-by">Уровень иностранного языка<span class="caret"></span></a></td>
                   <td><a href="" class="white-text templatemo-sort-by">Описание <span class="caret"></span></a></td>
                   <td>Изменить запись</td>
                   <td>Удалить запись</td>
@@ -172,11 +192,13 @@
                 <c:forEach items="${vacancyList}" var = "vacancy" >
                   <form method="post" action="/hr/vacancy/delete">
                     <tr>
-                      <td><input type="number" name="id" style="outline: none; border: none; background: #f9f9f9;" value="${vacancy.id}" readonly></td>
+                      <td><input type="number" name="id" style="width:100px; outline: none; border: none; background: #f9f9f9;" value="${vacancy.id}" readonly></td>
                       <td>${vacancy.name}</td>
                       <td>${vacancy.post.department}</td>
                       <td>${vacancy.post.post}</td>
                       <td>${vacancy.testLink}</td>
+                      <td>${vacancy.pass_score}</td>
+                      <td>${vacancy.language_level}</td>
                       <td>${vacancy.description}</td>
                       <td>
                         <a href="#openModal-${vacancy.id}" class="templatemo-edit-btn">Изменить</a></td>
@@ -187,7 +209,7 @@
                     <div id="openModal-${vacancy.id}" class="modalDialog">
                       <div>
                         <a href="#close" title="Закрыть" class="close">X</a>
-                        <div class="modal-body">
+<%--                        <div class="modal-body">--%>
                           <input type="number" name="id" style="outline: none; border: none; background: #f9f9f9;" value="${vacancy.id}" class="hidden" readonly>
                           <div class="form-group required">
                             <label for="nameVacancy" class="col-sm-3 control-label">Вакансия</label>
@@ -218,6 +240,7 @@
                               </select>
                             </div>
                           </div>
+                        <div>
                           <div class="form-group">
                             <label for="link" class="col-sm-3 control-label">Ссылка на тест</label>
                             <div class="col-sm-9">
@@ -225,6 +248,27 @@
                             </div>
                           </div>
                         </div>
+
+                        <div class="form-group">
+                          <label for="link" class="col-sm-3 control-label">Тестовый балл</label>
+                          <div class="col-sm-9">
+                            <input type="number" class="form-control" min="0" max="10" step="0.1" id="pass_score" name="pass_score" value="${vacancy.pass_score}" placeholder="Тестовый балл">
+                          </div>
+                        </div>
+                        <div class="form-group required">
+                          <label for="post" class="col-sm-3 control-label">Иностранного языка</label>
+                          <div class="col-sm-9">
+                            <select class="form-control" id="language_level" name="language_level" >
+                              <option value="A1"selected>A1</option>
+                              <option value="A2">A2</option>
+                              <option value="B1">B1</option>
+                              <option value="B2">B2</option>
+                              <option value="C1">C1</option>
+                              <option value="C2">C2</option>
+                            </select>
+                          </div>
+                        </div>
+
                         <div class="form-group">
                           <label for="description" class="col-sm-3 control-label">Описание</label>
                           <div class="col-sm-9">
@@ -239,7 +283,7 @@
                           </button>
                         </div>
                       </div>
-                    </div>
+<%--                    </div>--%>
                   </form>
                 </c:forEach>
                 </tbody>

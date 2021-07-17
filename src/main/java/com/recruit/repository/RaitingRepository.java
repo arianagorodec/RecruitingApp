@@ -20,4 +20,8 @@ public interface RaitingRepository extends JpaRepository<Raiting,Long> {
     @Modifying
     @Query("delete from Raiting a where a.vacancy.id = :id_vacancy")
     void deleteByIdVacancy(@Param("id_vacancy") Long id);
+
+    @Modifying
+    @Query("delete from Raiting a where a.id = :id")
+    void deleteById(@Param("id") Long id_raiting);
 }

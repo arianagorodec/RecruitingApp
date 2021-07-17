@@ -2,33 +2,26 @@ package com.recruit.model;
 
 import com.recruit.entity.Candidate;
 import com.recruit.entity.Raiting;
-import com.recruit.entity.Test;
 import com.recruit.entity.Vacancy;
 import com.recruit.entity.enums.LanguageLevel;
-import com.recruit.service.impl.CandidateServiceImpl;
-import com.recruit.service.impl.TestServiceImpl;
-import com.recruit.service.impl.VacancyServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class AnalyzeCandidates {
 
-    public List<Candidate> firstStepAnalyze(Vacancy vacancy, List<Candidate> allCandidatesList, Test test){
+    public List<Candidate> firstStepAnalyze(Vacancy vacancy, List<Candidate> allCandidatesList){
         List<Candidate> result = new ArrayList<>();
         if(allCandidatesList!=null) {
             for (Candidate candidate : allCandidatesList) {
                 for (Raiting raiting : candidate.getRaitings()) {
                     candidate.setRaiting(raiting);
                     if (raiting.getVacancy() == vacancy) {
-                        if (raiting.getTestScope() >= test.getPass_score())
+                        if (raiting.getTestScope() >= vacancy.getPass_score())
                             result.add(candidate);
                     }
                 }
             }
-//            for (Candidate candidate: result)
-//                System.out.println(candidate.getRaiting().getLangScope());
         }
 
         return result;

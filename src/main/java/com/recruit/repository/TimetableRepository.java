@@ -27,4 +27,8 @@ public interface TimetableRepository extends JpaRepository<Timetable, Long> {
     @Modifying
     @Query("delete from Timetable t where t.vacancy.id = :id_vacancy")
     void deleteByIdVacancy(@Param("id_vacancy") Long id_vacancy);
+
+    @Modifying
+    @Query("delete from Timetable t where t.id = :id")
+    void deleteById(@Param("id") Long id_timetable);
 }

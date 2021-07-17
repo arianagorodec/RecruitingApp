@@ -92,7 +92,7 @@
                                         <c:forEach items="${vacancyList}" var = "vacancy" >
                                         <li class="pricingTable-firstTable_table">
                                             <form method="post">
-                                                <h1 id = "typeVacancy" class="pricingTable-firstTable_table__header">${vacancy.name}<input type="hidden" name="id" value="${vacancy.id}"></h1>
+                                                <h1 id = "typeVacancy" class="pricingTable-firstTable_table__header">${vacancy.name}<input type="hidden" name="id" value="${vacancy.id}"> <input type="hidden" name="use" value="${vacancy.use}"></h1>
                                                 <p class="pricingTable-firstTable_table__pricing"><span>${vacancy.description}</span></p>
 <%--                                                <ul class="pricingTable-firstTable_table__options">--%>
 <%--                                                    <li>${name}</li>--%>
@@ -104,6 +104,7 @@
                                                 </c:if>
                                                 <c:if test="${vacancy.use.equals(true)}">
                                                     <div><a>Вы уже откликнулись на данную вакансию</a></div>
+                                                    <div><button type="submit" class="pricingTable-firstTable_table__getstart" style="width: 250px">Отказаться</button></div>
                                                 </c:if>
                                             </form>
                                         </li>

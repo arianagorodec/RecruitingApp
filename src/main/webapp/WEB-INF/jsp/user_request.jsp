@@ -20,11 +20,13 @@
 <title>CodePen - Chat Widget</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"/>
 <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'/>
-    <link href="${contextPath}/resources/css3/font-awesome.min.css" rel="stylesheet"/>
-    <link href="${contextPath}/resources/css3/bootstrap.min.css" rel="stylesheet"/>
-    <link href="${contextPath}/resources/css3/templatemo-style.css" rel="stylesheet"/>
+      <link href="${contextPath}/resources/css3/font-awesome.min.css" rel="stylesheet"/>
+      <link href="${contextPath}/resources/css3/bootstrap.min.css" rel="stylesheet"/>
+      <link href="${contextPath}/resources/css3/templatemo-style.css" rel="stylesheet"/>
+      <link href="${contextPath}/resources/css5/templatemo-style.css" rel="stylesheet"/>
 
-   </head>
+
+  </head>
   <body>  
     <!-- Left column -->
     <div class="templatemo-flex-row">
@@ -85,6 +87,8 @@
           <div class="templatemo-flex-row flex-content-row">
             <div class="templatemo-content-widget white-bg col-2">
                 <c:forEach items="${vacancyList}" var = "vacancy" >
+                    <form method="post">
+                        <input type="hidden" name="id" value="${vacancy.id}">
                 <div class="panel panel-default templatemo-content-widget white-bg no-padding templatemo-overflow-hidden">
                     <i class="fa fa-times"></i>
                     <div class="panel-heading templatemo-position-relative">
@@ -108,11 +112,13 @@
                                         <h3><i class="fa fa-square"></i> Собеседование с командой</h3><br>
                                         <a><h4>Дата и время: ${vacancy.techInterviewerDate}</h4></a>
                                     </li>
+                                        <div><button type="submit" class="pricingTable-firstTable_table__getstart" style="width: 250px">Отказаться</button></div>
                                 </div>
                             </div>
                         </section>
                     </div>
                 </div>
+                    </form>
                 </c:forEach>
             </div>
           </div> <!-- Second row ends -->

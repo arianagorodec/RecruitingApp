@@ -17,10 +17,7 @@ import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Controller
 public class UserController {
@@ -38,7 +35,8 @@ public class UserController {
     private VacancyServiceImpl vacancyService;
     @Autowired
     private TimetableServiceImpl timetableService;
-
+    @Autowired
+    private RaitingServiceImpl raitingService;
 
     @Value("${upload.path}")
     private  String uploadPath;
@@ -216,19 +214,73 @@ public class UserController {
     }
 
     @PostMapping("/user/vacancy")
-    public String addVacancy(@RequestParam("id") long id_vacancy) throws IOException {
+    public String addVacancy(@RequestParam("id") long id_vacancy,
+                             @RequestParam("use") String use) throws IOException {
         Candidate candidate = candidateService.getInfoCandidate();
         Vacancy vacancy = vacancyService.getById(id_vacancy);
-        candidate.getVacancies().add(vacancy);
-        Raiting raiting = new Raiting();
-        raiting.setVacancy(vacancy);
-        raiting.setTestScope(0.0);
-        raiting.setLangScope(null);
-        raiting.setSocialScope(0.0);
-        raiting.setTechScope(0.0);
-        candidate.setRaiting(raiting);
+        if(use.equals("false")) {
+            candidate.getVacancies().add(vacancy);
+            Raiting raiting = new Raiting();
+            raiting.setVacancy(vacancy);
+            raiting.setTestScope(0.0);
+            raiting.setLangScope(null);
+            raiting.setSocialScope(0.0);
+            raiting.setTechScope(0.0);
+            raiting.setCandidate(candidate);
+            candidate.getRaitings().add(raiting);
+        }
+        else {
+            candidate.getVacancies().remove(vacancy);
+            Set<Raiting> raitings = candidate.getRaitings();
+            Set<Timetable> timetables = candidate.getTimetableSet();
+            if(raitings!=null) {
+                for (Raiting raiting : raitings) {
+                    if (raiting.getVacancy().getId()==vacancy.getId()) {
+                        candidate.getRaitings().remove(raiting);
+                        raitingService.deleteById(raiting.getId_raiting());
+                        break;
+                    }
+                }
+            }
+            if (timetables != null) {
+                for (Timetable timetable : timetables) {
+                    if (timetable.getVacancy().getId()==vacancy.getId()) {
+                        candidate.getTimetableSet().remove(timetable);
+                        timetableService.deleteById(timetable.getId());
+                    }
+                }
+            }
+        }
         candidateService.updateCandidate(candidate);
         return "redirect:/user/vacancy";
+    }
+
+    @PostMapping("/user/request")
+    public String deleteVacancy(@RequestParam("id") long id_vacancy) throws IOException {
+        Candidate candidate = candidateService.getInfoCandidate();
+        Vacancy vacancy = vacancyService.getById(id_vacancy);
+            candidate.getVacancies().remove(vacancy);
+            Set<Raiting> raitings = candidate.getRaitings();
+            Set<Timetable> timetables = candidate.getTimetableSet();
+            if(raitings!=null) {
+                for (Raiting raiting : raitings) {
+                    if (raiting.getVacancy().getId()==vacancy.getId()) {
+                        candidate.getRaitings().remove(raiting);
+                        raitingService.deleteById(raiting.getId_raiting());
+                        break;
+                    }
+                }
+            }
+            if (timetables != null) {
+                for (Timetable timetable : timetables) {
+                    if (timetable.getVacancy().getId()==vacancy.getId()) {
+                        candidate.getTimetableSet().remove(timetable);
+                        timetableService.deleteById(timetable.getId());
+                    }
+                }
+            }
+        candidateService.updateCandidate(candidate);
+        return "redirect:/user/request";
     }
 
 }

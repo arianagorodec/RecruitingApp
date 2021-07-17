@@ -81,12 +81,28 @@ public class AnketaServiceImpl implements AnketaService {
         return anketa;
     }
 
+    public Anketa delimAnswer(Anketa anketa){
+        String delimeter = "\\."; // Разделитель
+        String delimeterAnswer = "/";
+        String answers[]=anketa.getAnswers().split(delimeterAnswer);
+        anketa.setQuestion1(answers[0]);
+        anketa.setQuestion2(answers[1]);
+        anketa.setQuestion3(answers[2]);
+        anketa.setQuestion4(answers[3]);
+        anketa.setQuestion5(answers[4]);
+        anketa.setQuestion6(answers[5].split(delimeter));
+        anketa.setQuestion7(answers[6].split(delimeter));
+        anketa.setQuestion8(answers[7].split(delimeter));
+        return anketa;
+    }
+
     public Double[] question4Percent(List<Anketa> anketaList) {
         Double[] q = new Double[4];
         for (int i = 0; i< q.length; i++) {
             q[i] = 0.0;
         }
         for (Anketa anketa: anketaList) {
+            delimAnswer(anketa);
             if(anketa.getQuestion4().equals("Отлично"))
                 q[0]++;
             else if(anketa.getQuestion4().equals("Хорошо"))
@@ -109,6 +125,7 @@ public class AnketaServiceImpl implements AnketaService {
             q[i] = 0.0;
         }
         for (Anketa anketa: anketaList) {
+            delimAnswer(anketa);
             if(anketa.getQuestion5().equals("Несколько часов"))
                 q[0]++;
             else if(anketa.getQuestion5().equals("Несколько дней"))
@@ -131,6 +148,7 @@ public class AnketaServiceImpl implements AnketaService {
             q[i] = 0.0;
         }
         for (Anketa anketa: anketaList) {
+            delimAnswer(anketa);
             if(anketa.getQuestion5().equals("Да"))
                 q[0]++;
             else
@@ -148,6 +166,7 @@ public class AnketaServiceImpl implements AnketaService {
             q[i] = 0.0;
         }
         for (Anketa anketa: anketaList) {
+            delimAnswer(anketa);
             if(anketa.getQuestion5().equals("Да"))
                 q[0]++;
             else

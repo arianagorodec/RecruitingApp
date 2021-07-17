@@ -15,6 +15,7 @@
 	<!-- Font-->
 	<link rel="stylesheet" type="text/css" href="${contextPath}/resources/css2/opensans-font.css">
 	<link rel="stylesheet" type="text/css" href="${contextPath}/resources/fonts2/material-design-iconic-font/css/material-design-iconic-font.min.css">
+
 	<!-- Main Style Css -->
     <link rel="stylesheet" href="${contextPath}/resources/css2/style.css"/>
 </head>
@@ -113,11 +114,6 @@
 								</div>
 							</div>
 			            </section>
-			            <!-- <div class="form-row">
-									<div class="form-holder form-holder-2">
-										<input type="text" class="form-control input-border" id="id" name="id" placeholder="ID" required>
-									</div>
-								</div> -->
 						<!-- SECTION 2 -->
 			            <h2>
 			            	<p class="step-icon"><span>02</span></p>
@@ -127,7 +123,7 @@
 			                <div class="inner">
 			                	<div class="wizard-header">
 									<h3 class="heading">Ваше ID сотрудника </h3>
-									<p>Пожалуйста, введите ваше ID и пароль, затем перейдите к следующему шагу, чтобы мы могли создать вашу учетную запись.</p>
+									<p>Пожалуйста, введите ваше ID и пароль, затем нажмите на кнопку "Зарегистрироваться", чтобы мы могли создать вашу учетную запись.</p>
 								</div>
 								<div class="form-row">
 									<div class="form-holder form-holder-1">
@@ -176,52 +172,55 @@
 
 								<p>*В случае, если вы являетесь соискателем, введите в поле Ваше ID сотрудника 1 ноль и перейдите к следующему шагу</p>
 							</div>
-			            </section>
-			            <!-- SECTION 3 -->
+<%--							<button type="button" style="width: 200px; height: 30px; background: #007bff; color: snow; opacity: 80% "  href="/"> Выход </button>--%>
+							<button type="button" style="width: 200px; height: 30px; background: #0066b3; color: snow; opacity: 80% "  ><a class="txt2" href="/" style="color: snow"> Выход </a></button>
+							<button type="submit"  style="width: 200px; height: 30px; background: #0066b3; color: snow; opacity: 80% " >Зарегистрироваться</button>
+						</section>
+<%--			            <!-- SECTION 3 -->--%>
 
-			            <h2>
-			            	<p class="step-icon"><span>03</span></p>
-			            	<span class="step-text">Соглашение</span>
-			            </h2>
-			            <section>
-			                <div class="inner">
-			                	<div class="wizard-header">
-									<h3 class="heading">Пользовательское соглашение</h3>
-									<p>Пожалуйста, введите информацию и перейдите к следующему шагу, чтобы мы могли создать вашу учетную запись.</p>
-								</div>
-								<div class="form-row">
-			                		<div class="form-holder form-holder-2">
-			                			
-			                		</div>
-			                	</div>
-			                	<div>
-			                		<fieldset class="row4">
-                <legend>Условия и рассылка
-                </legend>
-                <p class="agreement">
-                    <input required="required" type="checkbox" value="">
-                    <label>*  Я принимаю <a href="#"> Условия использования</a></label>
-                </p>
-                <p class="agreement">
-                    <input required="required" type="checkbox" value="">
-                    <label>Я хочу получать персональные предложения от вашего сайта</label>
-                </p>
-                <p class="agreement">
-                    <input required="required" type="checkbox" value="">
-                    <label>Разрешить партнерам присылать мне персонализированные предложения и сопутствующие услуги</label>
-                </p>
-            </fieldset>
-            <div >
+<%--			            <h2>--%>
+<%--			            	<p class="step-icon"><span>03</span></p>--%>
+<%--			            	<span class="step-text">Соглашение</span>--%>
+<%--			            </h2>--%>
+<%--			            <section>--%>
+<%--			                <div class="inner">--%>
+<%--			                	<div class="wizard-header">--%>
+<%--									<h3 class="heading">Пользовательское соглашение</h3>--%>
+<%--									<p>Пожалуйста, введите информацию и перейдите к следующему шагу, чтобы мы могли создать вашу учетную запись.</p>--%>
+<%--								</div>--%>
+<%--								<div class="form-row">--%>
+<%--			                		<div class="form-holder form-holder-2">--%>
+<%--			                			--%>
+<%--			                		</div>--%>
+<%--			                	</div>--%>
+<%--			                	<div>--%>
+<%--			                		<fieldset class="row4">--%>
+<%--                <legend>Условия и рассылка--%>
+<%--                </legend>--%>
+<%--                <p class="agreement">--%>
+<%--                    <input required="required" type="checkbox" value="">--%>
+<%--                    <label>*  Я принимаю <a href="#"> Условия использования</a></label>--%>
+<%--                </p>--%>
+<%--                <p class="agreement">--%>
+<%--                    <input required="required" type="checkbox" value="">--%>
+<%--                    <label>Я хочу получать персональные предложения от вашего сайта</label>--%>
+<%--                </p>--%>
+<%--                <p class="agreement">--%>
+<%--                    <input required="required" type="checkbox" value="">--%>
+<%--                    <label>Разрешить партнерам присылать мне персонализированные предложения и сопутствующие услуги</label>--%>
+<%--                </p>--%>
+<%--            </fieldset>--%>
+<%--            <div >--%>
 						
-						<a class="txt2" href="/">
-							Выход
-						</a>
-				<button type="submit" >Зарегистрироваться</button>
+<%--						<a class="txt2" href="/">--%>
+<%--							Выход--%>
+<%--						</a>--%>
+<%--				<button type="submit" >Зарегистрироваться</button>--%>
 <%--				<button type="submit" ><a href="/">Зарегистрироваться</a></button>--%>
-					</div>
-			                	</div>
-							</div>
-			            </section>
+<%--					</div>--%>
+<%--			                	</div>--%>
+<%--							</div>--%>
+<%--			            </section>--%>
 			            </div>
 		        	</div>
 			</form:form>
@@ -234,5 +233,5 @@
 	<script src="${contextPath}/resources/js2/jquery-3.3.1.min.js"></script>
 	<script src="${contextPath}/resources/js2/jquery.steps.js"></script>
 	<script src="${contextPath}/resources/js2/main.js"></script>
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</body>
 </html>

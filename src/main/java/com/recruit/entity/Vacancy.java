@@ -11,8 +11,8 @@ import java.util.Set;
 @Table(name="vacancy")
 public class Vacancy {
     @Id
-    @GeneratedValue(generator = "increment")
-    @GenericGenerator(name = "increment", strategy = "increment")
+    @GeneratedValue(generator = "native")
+    @GenericGenerator(name = "native", strategy = "native")
     @Column(name = "id_vacancy", length = 11, nullable = false)
     private long id;
 
@@ -24,6 +24,8 @@ public class Vacancy {
     private String description;
     @Column(name="language_level")
     private LanguageLevel language_level;
+    @Column(name="pass_score")
+    private double pass_score;
 
     @Transient
     private boolean use=false;
@@ -46,10 +48,6 @@ public class Vacancy {
 
     @ManyToMany(mappedBy = "vacancies", fetch = FetchType.LAZY)
     private Set<Candidate> candidates = new HashSet<>();
-
-
-    @OneToOne(mappedBy="vacancy", cascade = CascadeType.ALL)
-    private Test test;
 
 
     public Vacancy() {
@@ -168,11 +166,11 @@ public class Vacancy {
         this.language_level = language_level;
     }
 
-    public Test getTest() {
-        return test;
+    public double getPass_score() {
+        return pass_score;
     }
 
-    public void setTest(Test test) {
-        this.test = test;
+    public void setPass_score(double pass_score) {
+        this.pass_score = pass_score;
     }
 }

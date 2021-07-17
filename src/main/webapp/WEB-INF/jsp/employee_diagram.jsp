@@ -61,26 +61,6 @@
           </div>
         </div>
         <div class="templatemo-content-container">
-          <div class="templatemo-flex-row flex-content-row">
-                       
-            <div class="templatemo-content-widget white-bg col-1">
-              <i class="fa fa-times"></i>
-              <h2 class="text-uppercase">Основные показатели</h2><br>
-              <h3 class="text-uppercase">Инфляция</h3>
-              <div class="progress">
-                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
-              </div>
-              <h3 class="text-uppercase">ИПЦ</h3>
-              <div class="progress">
-                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 50%;"></div>
-              </div>
-              <h3 class="text-uppercase">ВВП</h3>
-              <div class="progress">
-                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
-              </div>                          
-            </div>
-          </div>
-
           
           <div class="templatemo-flex-row flex-content-row templatemo-overflow-hidden"> <!-- overflow hidden for iPad mini landscape view-->
             <div class="col-1 templatemo-overflow-hidden">
@@ -88,7 +68,7 @@
                 <i class="fa fa-times"></i>
                 <div class="templatemo-flex-row flex-content-row">
                   <div class="col-1 col-lg-6 col-md-12">
-                    <h2 class="text-center">Займы в валюте<!-- <span class="badge">new</span> --></h2>
+                    <h2 class="text-center">Соотношение курсов валют <!-- <span class="badge">new</span> --></h2>
                     <div id="pie_chart_div" class="templatemo-chart"></div> <!-- Pie chart div -->
                   </div>
                   <div class="col-1 col-lg-6 col-md-12">

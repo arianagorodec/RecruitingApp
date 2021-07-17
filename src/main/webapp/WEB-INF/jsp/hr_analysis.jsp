@@ -139,7 +139,7 @@
                 <div class="col-1">
                     <div class="panel panel-default templatemo-content-widget white-bg no-padding templatemo-overflow-hidden">
                         <i class="fa fa-times"></i>
-                        <div class="panel-heading templatemo-position-relative"><h2 class="text-uppercase">Этап 1</h2></div>
+                        <div class="panel-heading templatemo-position-relative"><h2 class="text-uppercase">Этап 1. Тест (Набрал проходной балл)</h2></div>
                         <div class="table-responsive">
                             <!-- Main Content -->
                             <div class="page-wrapper">
@@ -160,6 +160,7 @@
                                                                         <th>id</th>
                                                                         <th>Вакансия</th>
                                                                         <th>Кто</th>
+                                                                        <th>email</th>
                                                                         <th>Тест</th>
                                                                     </tr>
                                                                     </thead>
@@ -170,7 +171,8 @@
                                                                             <td><input type="text" id="id_tab_1" name="id" value="${candidate.id}" style="width: 50px; background-color: transparent; border: none; outline: none;" readonly></td>
                                                                             <td><input type="text" id="vacancy_tab_1" name="vacancy" style=" width: 300px; background-color: transparent; border: none; outline: none;" value="${candidate.raiting.vacancy.name}" readonly></td>
                                                                             <td>${candidate.surname} ${candidate.name}</td>
-                                                                                <td><input type="text" id="testScope_tab_1" name="testScope" style="width: 50px; background-color: transparent; border: none; outline: none;" value="${candidate.raiting.testScope}" readonly></td>
+                                                                            <td>${candidate.email}</td>
+                                                                            <td><input type="text" id="testScope_tab_1" name="testScope" style="width: 50px; background-color: transparent; border: none; outline: none;" value="${candidate.raiting.testScope}" readonly></td>
                                                                         </tr>
                                                                     </c:forEach>
                                                                     </tbody>
@@ -199,7 +201,7 @@
                 <div class="col-1">
                     <div class="panel panel-default templatemo-content-widget white-bg no-padding templatemo-overflow-hidden">
                         <i class="fa fa-times"></i>
-                        <div class="panel-heading templatemo-position-relative"><h2 class="text-uppercase">Этап 2</h2></div>
+                        <div class="panel-heading templatemo-position-relative"><h2 class="text-uppercase">Этап 2. Иностранный язык (обладает требуемым уровнем языка)</h2></div>
                         <div class="table-responsive">
                             <!-- Main Content -->
                             <div class="page-wrapper">
@@ -220,8 +222,10 @@
                                                                         <th>id</th>
                                                                         <th>Вакансия</th>
                                                                         <th>Кто</th>
+                                                                        <th>email</th>
                                                                         <th>Тест</th>
                                                                         <th>Иностранный язык</th>
+                                                                        <th>Навыки общения</th>
                                                                     </tr>
                                                                     </thead>
 
@@ -231,8 +235,10 @@
                                                                             <td><input type="text" id="id_tab_2" name="id" value="${candidate.id}" style="width: 50px; background-color: transparent; border: none; outline: none;" readonly></td>
                                                                             <td><input type="text" id="vacancy_tab_2" name="vacancy" style=" width: 300px; background-color: transparent; border: none; outline: none;" value="${candidate.raiting.vacancy.name}" readonly></td>
                                                                             <td>${candidate.surname} ${candidate.name}</td>
+                                                                            <td>${candidate.email}</td>
                                                                             <td><input type="text" id="testScope_tab_2" name="testScope" style="width: 50px; background-color: transparent; border: none; outline: none;" value="${candidate.raiting.testScope}" readonly></td>
                                                                             <td><input type="text" id="langScope_tab_2" name="langScope" style="width: 50px; background-color: transparent; border: none; outline: none;" value="${candidate.raiting.langScope}" readonly></td>
+                                                                            <td><input type="text" id="socialScope_tab_2" name="socialScope" style="width: 50px; background-color: transparent; border: none; outline: none;" value="${candidate.raiting.socialScope}" readonly></td>
                                                                         </tr>
                                                                     </c:forEach>
                                                                     </tbody>
@@ -261,7 +267,7 @@
                 <div class="col-1">
                     <div class="panel panel-default templatemo-content-widget white-bg no-padding templatemo-overflow-hidden">
                         <i class="fa fa-times"></i>
-                        <div class="panel-heading templatemo-position-relative"><h2 class="text-uppercase">Этап 3</h2></div>
+                        <div class="panel-heading templatemo-position-relative"><h2 class="text-uppercase">Этап 3. Результат за все этапы</h2></div>
                         <div class="table-responsive">
                             <!-- Main Content -->
                             <div class="page-wrapper">
@@ -282,6 +288,7 @@
                                                                         <th>id</th>
                                                                         <th>Вакансия</th>
                                                                         <th>Кто</th>
+                                                                        <th>email</th>
                                                                         <th>Тест</th>
                                                                         <th>Иностранный язык</th>
                                                                         <th>Навыки общения</th>
@@ -295,6 +302,7 @@
                                                                             <td><input type="text" id="id_tab_3" name="id" value="${candidate.id}" style="width: 50px; background-color: transparent; border: none; outline: none;" readonly></td>
                                                                             <td><input type="text" id="vacancy_tab_3" name="vacancy" style=" width: 300px; background-color: transparent; border: none; outline: none;" value="${candidate.raiting.vacancy.name}" readonly></td>
                                                                             <td>${candidate.surname} ${candidate.name}</td>
+                                                                            <td>${candidate.email}</td>
                                                                             <td><input type="text" id="testScope_tab_3" name="testScope" style="width: 50px; background-color: transparent; border: none; outline: none;" value="${candidate.raiting.testScope}" readonly></td>
                                                                             <td><input type="text" id="langScope_tab_3" name="langScope" style="width: 50px; background-color: transparent; border: none; outline: none;" value="${candidate.raiting.langScope}" readonly></td>
                                                                             <td><input type="text" id="socialScope_tab_3" name="socialScope" style="width: 50px; background-color: transparent; border: none; outline: none;" value="${candidate.raiting.socialScope}" readonly></td>

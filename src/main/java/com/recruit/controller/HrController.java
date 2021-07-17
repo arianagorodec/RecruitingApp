@@ -50,8 +50,6 @@ public class HrController {
     private OrganizationStructureServiceImpl organizationStructureService;
     @Autowired
     private MailSenderServiceIml mailSender;
-    @Autowired
-    private TestServiceImpl testService;
 
 
     @Value("${upload.path}")
@@ -220,14 +218,14 @@ public class HrController {
         return "hr_message";
     }
 
-    @GetMapping("/hr/test")
-    public String  testCreater(Model model) {
-        List<Vacancy> vacancyList = vacancyService.getAll();
-        Test test = null;
-        model.addAttribute("test", test);
-        model.addAttribute("vacancyList", vacancyList);
-        return "hr_test";
-    }
+//    @GetMapping("/hr/test")
+//    public String  testCreater(Model model) {
+//        List<Vacancy> vacancyList = vacancyService.getAll();
+//        Test test = null;
+//        model.addAttribute("test", test);
+//        model.addAttribute("vacancyList", vacancyList);
+//        return "hr_test";
+//    }
 
     @GetMapping("/hr/analysis")
     public String  analysisCandidates(Model model) {
@@ -412,6 +410,8 @@ public class HrController {
                              @RequestParam("department") String department,
                              @RequestParam("post") String post,
                              @RequestParam("link") String link,
+                             @RequestParam("pass_score") Double pass_score,
+                             @RequestParam("language_level") LanguageLevel language_level,
                              @RequestParam("description") String description) {
         Vacancy vacancy = new Vacancy();
         vacancy.setName(nameVacancy);
@@ -423,7 +423,9 @@ public class HrController {
         }
         vacancy.setPost(organizationStructureService.getByDepartmentAndPost(department,post));
         vacancy.setTestLink(link);
+        vacancy.setPass_score(pass_score);
         vacancy.setDescription(description);
+        vacancy.setLanguage_level(language_level);
         vacancyService.addVacancy(vacancy);
 
         return "redirect:/hr/vacancy";
@@ -538,15 +540,15 @@ public class HrController {
         return "redirect:/hr/profile";
     }
 
-    @PostMapping("/hr/test/select_vacancy")
-    public String  testCreaterSelectVAcancy(@RequestParam("vacancy") long id_vacancy,
-                                            Model model){
-        Test test = testService.getByIdVacancy(id_vacancy);
-        List<Vacancy> vacancyList = vacancyService.getAll();
-        model.addAttribute("test", test);
-        model.addAttribute("vacancyList", vacancyList);
-        return "redirect:/hr/test";
-    }
+//    @PostMapping("/hr/test/select_vacancy")
+//    public String  testCreaterSelectVAcancy(@RequestParam("vacancy") long id_vacancy,
+//                                            Model model){
+//        Test test = testService.getByIdVacancy(id_vacancy);
+//        List<Vacancy> vacancyList = vacancyService.getAll();
+//        model.addAttribute("test", test);
+//        model.addAttribute("vacancyList", vacancyList);
+//        return "redirect:/hr/test";
+//    }
 
 //    @PostMapping("/hr/test")
 //    public String  testCreaterSelectVAcancy(@RequestParam("vacancy") long id_vacancy,
@@ -568,10 +570,10 @@ public class HrController {
                                      Model model) {
             List<Vacancy> vacancyList = vacancyService.getAll();
             List<Candidate> allCandidatesList = candidateService.getByVacancy(id_vacancy);
-            Test test = testService.getByIdVacancy(id_vacancy);
+//            Test test = testService.getByIdVacancy(id_vacancy);
             Vacancy vacancy = vacancyService.getById(id_vacancy);
 
-            List<Candidate> firstStepList = new AnalyzeCandidates().firstStepAnalyze(vacancy, allCandidatesList, test);
+            List<Candidate> firstStepList = new AnalyzeCandidates().firstStepAnalyze(vacancy, allCandidatesList);
             List<Candidate> secondStepList = new AnalyzeCandidates().secondStepAnalyze(firstStepList, vacancy);
             List<Candidate> thirdStepList = new AnalyzeCandidates().thirdStepAnalyze(secondStepList, c_test, c_lang, c_softSkills, c_tech, countCandidate);
 
